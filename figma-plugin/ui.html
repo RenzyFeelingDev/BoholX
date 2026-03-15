@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Inter, sans-serif; padding: 16px; margin: 0; }
+    button {
+      background: #4F46E5; color: white; border: none; padding: 10px 20px;
+      border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; width: 100%;
+    }
+    button:hover { background: #4338CA; }
+    p { color: #64748b; font-size: 13px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <button onclick="parent.postMessage({pluginMessage:{type:'run'}}, '*')">
+    ✦ Generate BoholX Homepage
+  </button>
+  <p>Creates the full BoholX homepage design at 1440px on the current page.</p>
+</body>
+</html>
