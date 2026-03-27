@@ -27,12 +27,15 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        kanit: ["Kanit", "sans-serif"],
       },
       animation: {
         shimmer: "shimmer 2s linear infinite",
         "fade-in": "fadeIn 0.3s ease-out",
         "slide-up": "slideUp 0.3s ease-out",
         "chip-pop": "chipPop 0.2s cubic-bezier(0.34,1.56,0.64,1)",
+        "marquee": "marquee 25s linear infinite",
+        "marquee-reverse": "marqueeReverse 25s linear infinite",
       },
       keyframes: {
         shimmer: {
@@ -50,6 +53,14 @@ const config: Config = {
         chipPop: {
           "0%": { transform: "scale(0.8)", opacity: "0" },
           "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        marqueeReverse: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" },
         },
       },
     },
