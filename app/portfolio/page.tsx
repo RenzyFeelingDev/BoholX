@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { FallingPattern } from "@/app/components/FallingPattern";
 
 const PROJECTS = [
   {
@@ -165,53 +166,52 @@ export default function PortfolioPage() {
       {/* ── HERO ── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex flex-col items-center justify-center px-8 pt-24"
+        className="relative min-h-screen flex flex-col items-center justify-center"
         onMouseEnter={() => setShowCursor(true)}
         onMouseLeave={() => setShowCursor(false)}
       >
-        {/* Subtle grid background */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
+        {/* FallingPattern background — fills the entire hero */}
+        <div className="absolute inset-0 z-0">
+          <FallingPattern
+            color="rgba(255,255,255,0.55)"
+            backgroundColor="#0a0a0a"
+            duration={150}
+            blurIntensity="1em"
+            density={1}
+            className="h-full w-full"
+          />
+        </div>
 
-        {/* Glow orb */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-3xl pointer-events-none" />
-
+        {/* Centered content — sits above the pattern */}
         <div
-          className={`relative text-center transition-all duration-1000 ${
+          className={`relative z-10 text-center transition-all duration-1000 px-8 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          {/* Available badge */}
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-10 text-xs font-light tracking-[0.15em] text-white/50 uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Available for work
-          </div>
-
-          {/* Main name */}
-          <h1 className="text-[clamp(52px,9vw,140px)] font-black leading-[0.9] tracking-tight text-white uppercase">
-            Renald
-            <br />
-            <span className="text-white/20">Butlig</span>
-            <br />
-            Salin
+          {/* Main name — single line to match screenshot */}
+          <h1
+            className="font-black leading-none tracking-tight text-white uppercase"
+            style={{ fontSize: "clamp(52px, 8.5vw, 130px)", letterSpacing: "-0.02em" }}
+          >
+            RENALD B. SALIN
           </h1>
 
           {/* Role line */}
-          <p className="mt-8 text-lg font-light tracking-[0.25em] text-white/40 uppercase">
+          <p className="mt-5 text-sm font-light tracking-[0.3em] text-white/35 uppercase">
             Computer Engineer&nbsp;&nbsp;/&nbsp;&nbsp;UI UX Designer
           </p>
 
-          {/* Scroll indicator */}
-          <div className="mt-16 flex flex-col items-center gap-2">
-            <span className="text-[10px] tracking-[0.3em] text-white/30 uppercase">Scroll</span>
-            <div className="w-px h-16 bg-gradient-to-b from-white/30 to-transparent" />
+          {/* Available badge */}
+          <div className="mt-5 inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 text-xs font-light tracking-[0.2em] text-white/50 uppercase">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            Available for work
           </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+          <div className="w-px h-14 bg-gradient-to-b from-white/25 to-transparent" />
+          <span className="text-[9px] tracking-[0.3em] text-white/20 uppercase">Scroll</span>
         </div>
       </section>
 
